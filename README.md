@@ -1,6 +1,7 @@
 # Doccano API Client
 
 A simple client wrapper for the doccano API.
+This is a fork of doccano API Client customised to the specific needs of Okra AI 
 
 - [Doccano API Client](#doccano-api-client)
   - [Installation](#installation)
@@ -11,10 +12,10 @@ A simple client wrapper for the doccano API.
 
 ## Installation
 
-To install `doccano-client`, simply run:
+To install `okra-doccano-client`, simply run:
 
 ```bash
-pip install doccano-client
+pip install okra-doccano-client
 ```
 
 ## Usage
@@ -45,47 +46,3 @@ label_text = doccano_client.get_label_detail(1, 3)['text']
 r_json_upload = doccano_client.post_doc_upload(1, 'json', 'file.json', '/path/to/file/without/filename/')
 ```
 
-## Completion
-
-This wrapper's methods are based on doccano url [paths](https://github.com/chakki-works/doccano/blob/master/app/api/urls.py).
-
-Key:
-
-- ✔️ implemented
-- ❌ not implemented
-- ⚠️ currently broken or improperly implemented
-
-Endpoint Names:
-
-- ✔️ `auth-token`
-- ✔️ `me`
-- ✔️ `user_list`
-- ✔️ `roles`
-- ✔️ `features`
-- ✔️ `project_list`
-- ✔️ `project_detail`
-- ✔️ `statistics`
-- ✔️ `label_list`
-- ✔️ `label_detail`
-- ❌ `label_upload`
-- ✔️ `doc_list`
-- ✔️ `doc_detail`
-- ✔️ `doc_uploader`
-- ❌ `cloud_uploader`
-- ✔️ `approve_labels`
-- ✔️ `annotation_list`
-- ⚠️ `annotation_detail`
-- ✔️ `doc_downloader`
-- ✔️ `rolemapping_list`
-- ⚠️ `rolemapping_detail`
-
-## To-Do
-
-- investigate more secure alternatives to plaintext login
-- improve docstrings
-
-# Doccano API BETA Client
-
-We're introducing a newly revamped Doccano API Client that features more Pythonic interaction as well as more testing and documentation. It also adds more regulated compatibility with specific Doccano release versions.
-
-You can find the documentation on usage of the beta client [here](./doccano_api_client/beta/README.md).
