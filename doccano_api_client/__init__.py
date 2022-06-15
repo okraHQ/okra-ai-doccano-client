@@ -938,11 +938,11 @@ class DoccanoClient(_Router):
         arr_response = []
         for username, rolename in zip(usernames, roles):
             user = list(filter(lambda user_info: user_info["username"] == username, res_users))
-            assert len(user) >= 1, "username {username} not found".format(username=username)
+            assert len(user) >= 1, f"username {username} not found"
             user = user[0]
 
-            role = list(filter(lambda role_info: role_info["rolename"] == rolename, res_roles))
-            assert len(role) >= 1, "rolename {rolename} not found".format(rolename=rolename)
+            role = list(filter(lambda role_info: role_info["name"] == rolename, res_roles))
+            assert len(role) >= 1, f"rolename {rolename} not found"
             role = role[0]
 
             arr_response.append(
