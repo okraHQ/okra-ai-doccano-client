@@ -805,6 +805,68 @@ class DoccanoClient(_Router):
             headers=headers,
         )
 
+    def get_label_list(self, project_id: int) -> requests.models.Response:
+        """Gets a list of labels in a given project.
+
+        Args:
+            project_id (int): The project id.
+
+        Returns:
+            requests.models.Response: The request response.
+        """
+        return self.get("v1/projects/{project_id}/labels".format(project_id=project_id))
+
+    def get_label_detail(self, project_id: int, label_id: int) -> requests.models.Response:
+        """Gets details of a specific label.
+
+        Args:
+            project_id (int): The project id.
+            label_id (int): A label ID to query.
+
+        Returns:
+            requests.models.Response: The request response.
+        """
+        return self.get(
+            "v1/projects/{project_id}/labels/{label_id}".format(
+                project_id=project_id, label_id=label_id
+            )
+        )
+
+    def get_document_list(
+        self, project_id: int, url_parameters: dict = {}
+    ) -> requests.models.Response:
+        """Gets a list of documents in a project.
+
+        Args:
+            project_id (int): The project id.
+            url_parameters (dict): `limit` and `offset`
+
+        Example:
+            client.get_document_list(2, {'limit': [10], 'offset': [20]})
+
+        Returns:
+            requests.models.Response: The request response.
+        """
+        return self.get(
+            "v1/projects/{project_id}/docs{url_parameters}".format(
+                project_id=project_id, url_parameters=self.build_url_parameter(url_parameters)
+            )
+        )
+
+    def get_document_detail(self, project_id: int, doc_id: int) -> requests.models.Response:
+        """Gets details of a given document.
+
+        Args:
+            project_id (int): The project id.
+            doc_id (int): A document ID to query.
+
+        Returns:
+            requests.models.Response: The request response.
+        """
+        return self.get(
+            "v1/projects/{project_id}/docs/{doc_id}".format(project_id=project_id, doc_id=doc_id)
+        )
+
     def get_rolemapping_list(
         self,
         project_id: int,
@@ -917,6 +979,25 @@ class DoccanoClient(_Router):
             delimiter=delimiter,
             encoding=encoding,
             format=format,
+        )
+
+    def post_label_upload(
+        self, project_id: int, file_name: str, file_path: str = "./"
+    ) -> requests.models.Response:
+        """Uploads a label file to a Doccano project.
+
+        Args:
+            project_id (int): The project id.
+            file_name (str): The name of the file.
+            file_path (str): The parent path of the file. Defaults to `./`.
+
+        Returns:
+            requests.models.Response: The request response.
+        """
+        return self.post(
+            "v1/projects/{project_id}/label-upload".format(project_id=project_id),
+            files={"file": open(os.path.join(file_path, file_name), "rb")},
+            as_json=False,
         )
 
     def post_members(
