@@ -23,18 +23,16 @@ setuptools.setup(
     version="1.0",
     setup_requires=["setuptools_scm"],
     description="A simple client wrapper customised for okra doccano API.",
-    long_description="This simple API wrapper forked from doccano customised for okra that allows users to easily get"
-                     " data from and send data to a doccano instance.",
-    url="https://github.com/okraHQ/okra-ai-doccano-client",
+    long_description="This simple API wrapper forked from doccano customised for okra that allows users to easily get \
+                     data from and send data to a doccano instance.",
+    url='https://github.com/okraHQ/okra-ai-doccano-client',
     author="Okra Ds Team",
     author_email="chidera@okra.ng",
-    license="MIT",
     packages=["doccano_api_client"],
     install_requires=base_packages,
     extras_require={"dev": dev_packages},
     zip_safe=False,
     classifiers=[
-        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
